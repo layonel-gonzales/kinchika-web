@@ -552,129 +552,82 @@ function initCaustics() {
 }
 
 /* =========================================================================
-   SPLITTING + GSAP en hero title
+   CONFIGURACIÓN DE ANIMACIONES
+   Modifica aquí para ajustar opacidades y duraciones globalmente.
    ========================================================================= */
-function initSplitting() {
-  if (window.Splitting) {
-    document.getElementById('hero-title').setAttribute('data-splitting', '');
-    Splitting();
-    gsap.fromTo('#hero-title .char',
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, stagger: 0.04, ease: 'power3.out', delay: 0.3 }
-    );
+const ANIM = {
+  // Opacidad inicial (oculto) y final (visible)
+  from:     0,
+  to:       1,
 
-    // Headings de sección — clip vertical por char
-    document.querySelectorAll('.js-heading').forEach(el => {
-      el.setAttribute('data-splitting', '');
-    });
-    Splitting({ target: '.js-heading', by: 'chars' });
+  // Duraciones en segundos
+  duration: {
+    hero:    0.7,
+    heading: 0.65,
+    eyebrow: 0.5,
+    reveal:  0.55,
+  },
 
-    document.querySelectorAll('.js-heading').forEach(el => {
-      const chars = el.querySelectorAll('.char');
-      gsap.fromTo(chars,
-        { y: '110%' },
-        {
-          y: '0%',
-          duration: 0.9,
-          ease: 'power4.out',
-          stagger: 0.025,
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            once: true
-          }
-        }
-      );
-    });
-
-    // Eyebrows — letter-spacing expand + fade
-    document.querySelectorAll('.js-eyebrow').forEach(el => {
-      const finalSpacing = getComputedStyle(el).getPropertyValue('--ls') || '.35em';
-      gsap.to(el, {
-        opacity: 1,
-        letterSpacing: '.35em',
-        duration: 1.1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          once: true
-        }
-      });
-    });
-
-  } else {
-    document.getElementById('hero-title').style.opacity = 1;
-    // Sin Splitting: mostrar todo directamente
-    document.querySelectorAll('.js-heading').forEach(el => el.style.opacity = 1);
-    document.querySelectorAll('.js-eyebrow').forEach(el => {
-      el.style.opacity = 1;
-      el.style.letterSpacing = '.35em';
-    });
-  }
-}
+  // Desplazamiento Y inicial (px)
+  offsetY: {
+    hero:    20,
+    heading: 18,
+    reveal:  22,
+  },
+};
 
 /* =========================================================================
-   GSAP SCROLL ANIMATIONS INMERSIVAS — Sistema con efecto "franja central"
-   Entrada: fade-in + slide-up al 80% inferior
-   Salida: fade-out al 20% superior
-   Reversible: toggleActions para efecto espejo en scroll hacia arriba
+   SISTEMA DE ANIMACIONES — limpio, sin conflictos
+   Regla: elementos en viewport al cargar → visibles de inmediato
+          elementos fuera del viewport → fade-up al entrar (once)
    ========================================================================= */
-function initScrollAnimations() {
-  gsap.set("[data-reveal], .split-text", { visibility: "visible" });
-
+function initAnimations() {
   if (reduceMotion) return;
 
-  const reveals = gsap.utils.toArray('[data-reveal]');
+  // Hero title — fade-up simple al cargar
+  const heroTitle = document.getElementById('hero-title');
+  if (heroTitle) {
+    gsap.fromTo(heroTitle,
+      { opacity: ANIM.from, y: ANIM.offsetY.hero },
+      { opacity: ANIM.to, y: 0, duration: ANIM.duration.hero, ease: 'power2.out', delay: 0.15 }
+    );
+  }
 
-  reveals.forEach((el) => {
-    // Forzamos el estado inicial para que GSAP tome el control total
-    gsap.set(el, { opacity: 0, y: 30, scale: 0.98 });
-
-    gsap.to(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top bottom", // Empieza cuando el tope del elemento toca el fondo
-        end: "bottom top",   // Termina cuando el fondo del elemento toca el tope
-        scrub: 0.5,          // Sincronización suave con el scroll
-        onUpdate: (self) => {
-          // self.progress va de 0 (abajo) a 1 (arriba)
-          const p = self.progress;
-          
-          // Lógica de campana: 
-          // 0 -> 0 | 0.5 (centro) -> 1 | 1 -> 0
-          const alpha = p < 0.5 ? p * 2 : (1 - p) * 2;
-          
-          // Aplicamos los cambios dinámicamente
-          gsap.set(el, { 
-            opacity: Math.max(0, Math.min(1, alpha)), 
-            y: 30 * (1 - alpha),
-            scale: 0.98 + (0.02 * alpha)
-          });
-        }
-      }
-    });
+  // Headings de sección — fade-up al entrar en viewport
+  document.querySelectorAll('.js-heading').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) return;
+    gsap.fromTo(el,
+      { opacity: ANIM.from, y: ANIM.offsetY.heading },
+      { opacity: ANIM.to, y: 0, duration: ANIM.duration.heading, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true } }
+    );
   });
 
-  // Animación de burbujas para textos con Splitting
-  gsap.utils.toArray('.split-text').forEach((text) => {
-    const chars = text.querySelectorAll('.char');
-    if (chars.length) {
-      gsap.fromTo(chars, 
-        { opacity: 0, y: 15 },
-        {
-          opacity: 1, y: 0,
-          stagger: 0.02,
-          scrollTrigger: {
-            trigger: text,
-            start: "top 85%",
-            end: "top 40%",
-            scrub: 1,
-            toggleActions: "play reverse play reverse"
-          }
-        }
-      );
-    }
+  // Eyebrows — fade al entrar en viewport
+  document.querySelectorAll('.js-eyebrow').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) return;
+    gsap.fromTo(el,
+      { opacity: ANIM.from },
+      { opacity: ANIM.to, duration: ANIM.duration.eyebrow, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true } }
+    );
+  });
+
+  // Elementos con data-reveal — fade-up al entrar en viewport
+  gsap.utils.toArray('[data-reveal]').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    // Ya visible al cargar: no tocar
+    if (rect.bottom > 0 && rect.top < window.innerHeight) return;
+    // Ocultar solo los que están fuera del viewport
+    gsap.set(el, { opacity: ANIM.from, y: ANIM.offsetY.reveal });
+    gsap.to(el, {
+      opacity: ANIM.to, y: 0,
+      duration: ANIM.duration.reveal,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
   });
 }
 
@@ -942,13 +895,8 @@ function renderOrgChart() {
    INIT
    ========================================================================= */
 window.addEventListener('DOMContentLoaded', () => {
-  // Diagnóstico de elementos inmersivos
-  const revealCount = document.querySelectorAll('[data-reveal]').length;
-  console.log(`✓ Sistema inmersivo: ${revealCount} elementos [data-reveal] encontrados`);
-
   initLenis();
-  initSplitting();
-  initScrollAnimations();
+  initAnimations();
   initSwipers();
   initBubbles();
   initCaustics();
@@ -968,43 +916,11 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // AUDIO OVERLAY HANDLERS
-  document.getElementById('enable-sound').addEventListener('click', () => {
-    if (!reduceMotion) initAudio();
-    document.getElementById('audio-overlay').classList.add('hidden');
-    setAudioMuted(false);
-    bootBreathing();
-  });
-  document.getElementById('skip-sound').addEventListener('click', () => {
-    audioEnabled = false;
-    document.getElementById('audio-overlay').classList.add('hidden');
-    setAudioMuted(true);
-    stopRelaxedBreathing();
-  });
-  document.getElementById('audio-toggle').addEventListener('click', () => {
-    const wasMuted = audioMuted;
-    if (!audioEnabled && !reduceMotion) initAudio();
-    setAudioMuted(!wasMuted);
-  });
-
-  // ScrollTrigger refresh
-  setTimeout(() => {
+  // ScrollTrigger refresh + inicio de update continuo
+  requestAnimationFrame(() => {
     ScrollTrigger.refresh();
-    console.log(`✓ ScrollTrigger refrescado`);
-
-    // FALLBACK: Asegurar que elementos en viewport sean visibles
-    const revealElements = document.querySelectorAll('[data-reveal]');
-    revealElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-      if (isInViewport && getComputedStyle(el).opacity === '0') {
-        gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.6 });
-      }
-    });
-
-    // Iniciar actualización continua de rayos después de todo está listo
     continuousUpdate();
-  }, 300);
+  });
 });
 
 /* =========================================================================
