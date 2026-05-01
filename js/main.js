@@ -216,7 +216,6 @@ function updateProgress() {
   applyDepthBg(globalProgress);
   applyHud(globalProgress);
   applyAudioLayers(globalProgress);
-  applyDiverPose(globalProgress);
   applyWaterParticles(globalProgress);
   // applyEffectsLayers — REMOVIDO PARA REIMPLEMENTACIÓN DESDE CERO
 }
@@ -521,35 +520,6 @@ function initBubbles() {
   });
 }
 
-/* =========================================================================
-   CAUSTICS canvas 2D
-   ========================================================================= */
-function initCaustics() {
-  const c = document.getElementById('caustics-canvas');
-  const ctx = c.getContext('2d');
-  function resize() { c.width = window.innerWidth; c.height = window.innerHeight; }
-  resize(); window.addEventListener('resize', resize);
-  let t = 0;
-  function draw() {
-    ctx.clearRect(0, 0, c.width, c.height);
-    ctx.globalCompositeOperation = 'lighter';
-    for (let i = 0; i < 30; i++) {
-      const x = (Math.sin(t * 0.5 + i) * 0.5 + 0.5) * c.width;
-      const y = ((Math.cos(t * 0.3 + i * 1.7) * 0.5 + 0.5) * c.height);
-      const r = 60 + Math.sin(t + i) * 30;
-      const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
-      grad.addColorStop(0, 'rgba(180,220,255,0.18)');
-      grad.addColorStop(1, 'rgba(180,220,255,0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    t += 0.012;
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
 
 /* =========================================================================
    CONFIGURACIÓN DE ANIMACIONES
@@ -899,7 +869,6 @@ window.addEventListener('DOMContentLoaded', () => {
   initAnimations();
   initSwipers();
   initBubbles();
-  initCaustics();
   bindFilters();
   renderEvents();
   renderResultsSelector();
@@ -923,16 +892,3 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* =========================================================================
-   GSAP timeline para el apneísta a lo ancho del documento
-   (anclado al body — extra adornos con ScrollTrigger)
-   ========================================================================= */
-window.addEventListener('load', () => {
-  // Hide diver en secciones del club (no submarinas)
-  ScrollTrigger.create({
-    trigger: '#editorial-divider',
-    start: 'top 80%',
-    onEnter: () => gsap.to('#diver-stage', { opacity: 0, duration: 0.6 }),
-    onLeaveBack: () => gsap.to('#diver-stage', { opacity: 1, duration: 0.6 })
-  });
-});

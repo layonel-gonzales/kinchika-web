@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="css/swiper-bundle.min.css" />
 
 <link rel="stylesheet" href="css/styles.css" />
-<link rel="stylesheet" href="css/diver.css" />
 <link rel="stylesheet" href="css/apnea-simulator.css" />
 </head>
 <body>
@@ -32,9 +31,7 @@
 
 <!-- BACKGROUND LAYERS -->
 <div id="deep-bg"></div>
-<canvas id="caustics-canvas"></canvas>
 <canvas id="bubbles-canvas"></canvas>
-<div id="ascent-shimmer"></div>
 <div id="vignette"></div>
 
 <!-- PROGRESS BAR -->
@@ -63,136 +60,6 @@
   <div class="hud__row"><span class="hud__label">TIME</span><span class="hud__value" id="hud-time">00:00</span></div>
   <div class="hud__row"><span class="hud__label">TEMP</span><span class="hud__value" id="hud-temp">18°C</span></div>
   <div class="hud__row" id="hud-spo2-row"><span class="hud__label">SpO₂</span><span class="hud__value" id="hud-spo2">98%</span></div>
-</div>
-
-<!-- DIVER (SVG fixed que se anima) — Apneísta realista con anatomía deportista -->
-<div id="diver-stage">
-  <svg viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <!-- Gradiente del traje de neopreno -->
-      <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#1a1a2e"/>
-        <stop offset="1" stop-color="#0a0a14"/>
-      </linearGradient>
-      <!-- Patrón de malla del wetsuit -->
-      <pattern id="mesh" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-        <circle cx="2" cy="2" r="0.6" fill="rgba(255,255,255,0.12)"/>
-      </pattern>
-      <!-- Piel con gradiente realista -->
-      <radialGradient id="skin" cx="0.45" cy="0.35" r="0.6">
-        <stop offset="0" stop-color="#f0c8a8"/>
-        <stop offset="1" stop-color="#a88070"/>
-      </radialGradient>
-    </defs>
-
-    <g id="diver-root">
-      <!-- CABEZA - Proporcional -->
-      <g id="head">
-        <!-- Cráneo -->
-        <circle cx="100" cy="60" r="16" fill="url(#skin)"/>
-        <!-- Quijada/barbilla -->
-        <path d="M 88 70 Q 100 78 112 70" fill="url(#skin)"/>
-        <!-- Pelo -->
-        <path d="M 85 50 Q 100 40 115 50 Q 118 60 115 70 Q 100 65 85 70 Q 82 60 85 50 Z" fill="#0f0f15"/>
-        <!-- Cuello (conexión a torso) -->
-        <path d="M 94 75 L 92 95 Q 100 98 108 95 L 106 75 Z" fill="url(#suit)"/>
-      </g>
-
-      <!-- MÁSCARA -->
-      <g id="mask">
-        <ellipse cx="100" cy="58" rx="11" ry="8" fill="rgba(0,0,0,0.8)"/>
-        <ellipse cx="96" cy="57" rx="3.5" ry="4.5" fill="rgba(80,160,220,0.6)"/>
-        <ellipse cx="104" cy="57" rx="3.5" ry="4.5" fill="rgba(80,160,220,0.6)"/>
-        <!-- Correa de máscara -->
-        <path d="M 90 58 Q 100 52 110 58" stroke="rgba(0,0,0,0.5)" stroke-width="1.5" fill="none"/>
-      </g>
-
-      <!-- TUBO SNORKEL -->
-      <g id="snorkel">
-        <rect x="112" y="48" width="2.5" height="22" fill="#0a0a14" rx="1"/>
-      </g>
-
-      <!-- TORSO - Forma anatómica de deportista -->
-      <g id="torso">
-        <!-- Hombros anchos -->
-        <path d="M 70 95 Q 65 105 68 125 L 132 125 Q 135 105 130 95 Z" fill="url(#suit)"/>
-        <path d="M 70 95 Q 65 105 68 125 L 132 125 Q 135 105 130 95 Z" fill="url(#mesh)"/>
-
-        <!-- Pecho musculado -->
-        <path d="M 68 125 Q 70 145 75 160 L 125 160 Q 130 145 132 125 Z" fill="url(#suit)"/>
-        <path d="M 68 125 Q 70 145 75 160 L 125 160 Q 130 145 132 125 Z" fill="url(#mesh)"/>
-        <!-- Línea de pectoral (detalle) -->
-        <path d="M 100 128 Q 98 145 100 160" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
-
-        <!-- Abdomen definido (cintura) -->
-        <path d="M 75 160 Q 78 180 82 200 L 118 200 Q 122 180 125 160 Z" fill="url(#suit)"/>
-        <path d="M 75 160 Q 78 180 82 200 L 118 200 Q 122 180 125 160 Z" fill="url(#mesh)"/>
-        <!-- Líneas de abdominales (detalle) -->
-        <path d="M 98 165 L 98 195" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" fill="none"/>
-        <path d="M 102 165 L 102 195" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" fill="none"/>
-      </g>
-
-      <!-- BRAZO IZQUIERDO - Musculado -->
-      <g id="arm-left" transform="translate(70,110)">
-        <!-- Hombro -->
-        <circle cx="0" cy="0" r="7" fill="url(#suit)"/>
-        <!-- Bíceps -->
-        <path d="M -3 0 Q -8 15 -8 35 Q -7 45 -2 50 L 4 50 Q 9 45 8 35 Q 8 15 3 0 Z" fill="url(#suit)"/>
-        <path d="M -3 0 Q -8 15 -8 35 Q -7 45 -2 50 L 4 50 Q 9 45 8 35 Q 8 15 3 0 Z" fill="url(#mesh)"/>
-        <!-- Antebrazo -->
-        <path d="M -2 50 Q -4 65 -3 75 L 3 75 Q 4 65 2 50 Z" fill="url(#suit)"/>
-        <path d="M -2 50 Q -4 65 -3 75 L 3 75 Q 4 65 2 50 Z" fill="url(#mesh)"/>
-        <!-- Mano -->
-        <ellipse cx="0" cy="80" rx="5" ry="7" fill="url(#skin)"/>
-      </g>
-
-      <!-- BRAZO DERECHO - Musculado -->
-      <g id="arm-right" transform="translate(130,110)">
-        <!-- Hombro -->
-        <circle cx="0" cy="0" r="7" fill="url(#suit)"/>
-        <!-- Bíceps -->
-        <path d="M 3 0 Q 8 15 8 35 Q 7 45 2 50 L -4 50 Q -9 45 -8 35 Q -8 15 -3 0 Z" fill="url(#suit)"/>
-        <path d="M 3 0 Q 8 15 8 35 Q 7 45 2 50 L -4 50 Q -9 45 -8 35 Q -8 15 -3 0 Z" fill="url(#mesh)"/>
-        <!-- Antebrazo -->
-        <path d="M 2 50 Q 4 65 3 75 L -3 75 Q -4 65 -2 50 Z" fill="url(#suit)"/>
-        <path d="M 2 50 Q 4 65 3 75 L -3 75 Q -4 65 -2 50 Z" fill="url(#mesh)"/>
-        <!-- Mano -->
-        <ellipse cx="0" cy="80" rx="5" ry="7" fill="url(#skin)"/>
-      </g>
-
-      <!-- PIERNA IZQUIERDA - Muslos y pantorrillas definidas -->
-      <g id="leg-left" transform="translate(78,200)">
-        <!-- Muslo (cuádriceps) -->
-        <path d="M 0 0 Q -6 20 -5 50 L 5 50 Q 6 20 0 0 Z" fill="url(#suit)"/>
-        <path d="M 0 0 Q -6 20 -5 50 L 5 50 Q 6 20 0 0 Z" fill="url(#mesh)"/>
-        <!-- Línea de cuádriceps -->
-        <path d="M 0 5 Q -1 25 0 50" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" fill="none"/>
-
-        <!-- Pantorrilla (gemelo) -->
-        <path d="M -5 50 Q -6 65 -3 95 L 3 95 Q 6 65 5 50 Z" fill="url(#suit)"/>
-        <path d="M -5 50 Q -6 65 -3 95 L 3 95 Q 6 65 5 50 Z" fill="url(#mesh)"/>
-
-        <!-- Pie/Aleta -->
-        <path d="M -3 95 Q -8 110 -12 135 L -2 138 Q 4 115 3 95 Z" fill="#0d3a55" opacity="0.85"/>
-      </g>
-
-      <!-- PIERNA DERECHA - Muslos y pantorrillas definidas -->
-      <g id="leg-right" transform="translate(122,200)">
-        <!-- Muslo (cuádriceps) -->
-        <path d="M 0 0 Q 6 20 5 50 L -5 50 Q -6 20 0 0 Z" fill="url(#suit)"/>
-        <path d="M 0 0 Q 6 20 5 50 L -5 50 Q -6 20 0 0 Z" fill="url(#mesh)"/>
-        <!-- Línea de cuádriceps -->
-        <path d="M 0 5 Q 1 25 0 50" stroke="rgba(255,255,255,0.06)" stroke-width="0.8" fill="none"/>
-
-        <!-- Pantorrilla (gemelo) -->
-        <path d="M 5 50 Q 6 65 3 95 L -3 95 Q -6 65 -5 50 Z" fill="url(#suit)"/>
-        <path d="M 5 50 Q 6 65 3 95 L -3 95 Q -6 65 -5 50 Z" fill="url(#mesh)"/>
-
-        <!-- Pie/Aleta -->
-        <path d="M 3 95 Q 8 110 12 135 L 2 138 Q -4 115 -3 95 Z" fill="#0d3a55" opacity="0.85"/>
-      </g>
-    </g>
-  </svg>
 </div>
 
 <!-- ============= SECCIONES ============= -->
@@ -279,31 +146,42 @@
     <div class="section__head">
       <div class="eyebrow js-eyebrow">Historia del buceo en apnea</div>
       <h2 class="js-heading">Freediving · Buceo libre</h2>
-      <p>Una de las disciplinas más fascinantes y antiguas de la interacción humana con el mar.</p>
+      <p class="card">Una de las disciplinas más fascinantes y antiguas de la interacción humana con el mar.</p>
     </div>
     <div class="grid--timeline">
       <div class="card card--timeline" data-reveal data-reveal-duration="0.7">
-        <div class="card__icon">🏛️</div>
-        <h3>Antigua Grecia · Kálimnos</h3>
+        <div class="header-container">
+          <div class="card__icon">🏛️</div>
+          <h3>Antigua Grecia · Kálimnos</h3>
+        </div>
         <p>Los griegos se sumergían desnudos arrastrando una piedra pesada — la <em>skandalopetra</em> — para llegar rápido al fondo. Llenaban su boca con aceite de oliva y lo escupían en el fondo: rompía la refracción de la luz y mejoraba la visibilidad. Aristóteles y Homero ya escribían sobre ellos.</p>
       </div>
       <div class="card card--timeline" data-reveal data-reveal-duration="0.7">
-        <div class="card__icon">🌸</div>
-        <h3>Japón · Las Ama</h3>
+        <div class="header-container">
+          <div class="card__icon">🌸</div>
+          <h3>Japón · Las Ama/h3>
+        </div>
         <p>Casi 2.000 años de tradición milenaria de buceo en apnea protagonizada exclusivamente por mujeres. Conocidas como las "Mujeres del Mar", son históricamente famosas por su habilidad para recolectar perlas naturales y mariscos sumergiéndose a grandes profundidades.</p>
       </div>
       <div class="card card--timeline" data-reveal data-reveal-duration="0.7">
-        <div class="card__icon">🌊</div>
-        <h3>Corea · Las Haenyeo</h3>
+        <div class="header-container">
+          <div class="card__icon">🌊</div>
+          <h3>Corea · Las Haenyeo</h3>
+        </div>
         <p>Originarias de la isla de Jeju. Con frecuencia superando los 60 e incluso los 80 años, mantienen viva la tradición de recolectar a mano algas y mariscos, simbolizando una cultura matriarcal única de resistencia y autonomía económica.</p>
       </div>
       <div class="card card--timeline" data-reveal data-reveal-duration="0.7">
-        <div class="card__icon">🇮🇹</div>
-        <h3>Umberto Pelizzari</h3>
+        <div class="header-container">
+          <div class="card__icon">🇮🇹</div>
+          <h3>Umberto Pelizzari</h3>
+        </div>
         <p>El italiano que estableció nuevos límites para el buceo en apnea moderno, basados en la <strong>relajación y la técnica mental</strong>. Reescribió las posibilidades del cuerpo humano bajo el agua.</p>
       </div>
       <div class="card card--timeline" data-reveal data-reveal-duration="0.7">
-        <div class="card__icon">⭐</div>
+        <div class="header-container">
+          <div class="card__icon">⭐</div>
+          <h3>Natalia Molchanova</h3>
+        </div>
         <h3>Natalia Molchanova</h3>
         <p>La rusa que en el siglo XXI consolidó el deporte con un dominio absoluto, estableciendo múltiples récords mundiales e integrando la ciencia y el yoga a la disciplina, dejando un legado educativo que continúa definiendo los límites de lo que el cuerpo humano puede lograr bajo el agua sin asistencia.</p>
       </div>
@@ -550,7 +428,6 @@
 <script src="js/libs/splitting.min.js"></script>
 <script src="js/libs/howler.min.js"></script>
 
-<script src="js/diver.js"></script>
 <script src="js/main.js"></script>
 <script src="js/apnea-simulator.js"></script>
 
