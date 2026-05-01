@@ -11,7 +11,7 @@ const eventos = [
     ubicacion: "Playa Las Cruces, Región de Valparaíso",
     nivel: "Principiante",
     estado: "ABIERTO",
-    imagen: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200&q=70",
+    imagen: "img/eventos/limpieza-playa.svg",
     descripcion: "Jornada de limpieza submarina y de costa con apoyo de Asosub Santiago. Salida desde Lo Prado a las 7:00 hrs. Incluye desayuno comunitario, snorkel/apnea recreativa por la tarde y registro de residuos extraídos. Actividad familiar.",
     cupos: 40, cuposDisponibles: 18
   },
@@ -24,7 +24,7 @@ const eventos = [
     ubicacion: "Piscina Municipal de Lo Prado",
     nivel: "Principiante",
     estado: "ABIERTO",
-    imagen: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=70",
+    imagen: "img/eventos/clinica-apnea.svg",
     descripcion: "Introducción a la apnea estática a cargo del profesor Valentino Molina. Respiración diafragmática, relajación, manejo de contracciones, seguridad de pareja y primeros tiempos cronometrados. Incluye material teórico y se realiza dentro del horario regular del jueves.",
     cupos: 20, cuposDisponibles: 14
   },
@@ -37,7 +37,7 @@ const eventos = [
     ubicacion: "Pichilemu, Región del Libertador",
     nivel: "Intermedio",
     estado: "PRÓXIMO",
-    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=70",
+    imagen: "img/eventos/salida-pichilemu.svg",
     descripcion: "Fin de semana en mar abierto utilizando la boya grupal del club Kinchika. Práctica supervisada de descensos progresivos con cuerda guía. Camping y fogón. Solo para socios con experiencia previa de piscina.",
     cupos: 15, cuposDisponibles: 11
   },
@@ -50,7 +50,7 @@ const eventos = [
     ubicacion: "Piscina Municipal de Lo Prado",
     nivel: "Competitivo",
     estado: "PRÓXIMO",
-    imagen: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1200&q=70",
+    imagen: "img/eventos/interclubes-nado.svg",
     descripcion: "Encuentro amistoso convocado por Kinchika con clubes invitados de la RM. Categorías por edad y experiencia. Premiación simbólica y once compartida. Una jornada para tejer comunidad acuática.",
     cupos: 32, cuposDisponibles: 22
   },
@@ -63,7 +63,7 @@ const eventos = [
     ubicacion: "Centro Cívico Lo Prado",
     nivel: "Principiante",
     estado: "PRÓXIMO",
-    imagen: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=1200&q=70",
+    imagen: "img/eventos/charla-historia.svg",
     descripcion: "Charla abierta a la comunidad: desde los Ama y las Haenyeo hasta Pelizzari y Molchanova. Cómo el cuerpo humano aprendió a habitar la profundidad. Actividad gratuita, gestionada con el municipio.",
     cupos: 80, cuposDisponibles: 80
   }
@@ -136,39 +136,39 @@ const directivas = {
     periodo: "2026 - 2027",
     aprobadoEn: "Asamblea Ordinaria · Marzo 2026",
     miembros: [
-      { cargo: "Presidente", nivel: 1, nombre: "Francisco Reyes", foto: "https://i.pravatar.cc/150?u=francisco2026", email: "+56 9 6750 8503" },
-      { cargo: "Vicepresidente", nivel: 2, nombre: "Marcela Torres", foto: "https://i.pravatar.cc/150?u=marcela2026", email: "" },
-      { cargo: "Secretario General", nivel: 2, nombre: "Andrés Molina", foto: "https://i.pravatar.cc/150?u=andres2026", email: "" },
-      { cargo: "Tesorero", nivel: 3, nombre: "Carla Ibáñez", foto: "https://i.pravatar.cc/150?u=carla2026", email: "" },
-      { cargo: "Director Deportivo", nivel: 3, nombre: "Valentino Molina", foto: "https://i.pravatar.cc/150?u=valentino2026", email: "" },
-      { cargo: "Directora de Nado", nivel: 3, nombre: "Neymar Colmenares", foto: "https://i.pravatar.cc/150?u=neymar2026", email: "" },
-      { cargo: "Director de Comunicaciones", nivel: 3, nombre: "Fernanda Opazo", foto: "https://i.pravatar.cc/150?u=fernanda2026", email: "" },
-      { cargo: "Vocal", nivel: 4, nombre: "Luis Contreras", foto: "https://i.pravatar.cc/150?u=luis2026", email: "" },
-      { cargo: "Vocal", nivel: 4, nombre: "Pilar Núñez", foto: "https://i.pravatar.cc/150?u=pilar2026", email: "" }
+      { cargo: "Presidente", nivel: 1, nombre: "Francisco Reyes", foto: "img/directiva/francisco-reyes.svg", email: "+56 9 6750 8503" },
+      { cargo: "Vicepresidente", nivel: 2, nombre: "Marcela Torres", foto: "img/directiva/marcela-torres.svg", email: "" },
+      { cargo: "Secretario General", nivel: 2, nombre: "Andrés Molina", foto: "img/directiva/andres-molina.svg", email: "" },
+      { cargo: "Tesorero", nivel: 3, nombre: "Carla Ibáñez", foto: "img/directiva/carla-ibanez.svg", email: "" },
+      { cargo: "Director Deportivo", nivel: 3, nombre: "Valentino Molina", foto: "img/directiva/valentino-molina.svg", email: "" },
+      { cargo: "Directora de Nado", nivel: 3, nombre: "Neymar Colmenares", foto: "img/directiva/neymar-colmenares.svg", email: "" },
+      { cargo: "Director de Comunicaciones", nivel: 3, nombre: "Fernanda Opazo", foto: "img/directiva/fernanda-opazo.svg", email: "" },
+      { cargo: "Vocal", nivel: 4, nombre: "Luis Contreras", foto: "img/directiva/luis-contreras.svg", email: "" },
+      { cargo: "Vocal", nivel: 4, nombre: "Pilar Núñez", foto: "img/directiva/pilar-nunez.svg", email: "" }
     ]
   },
   "2025": {
     periodo: "2025 - 2026",
     aprobadoEn: "Asamblea Ordinaria · Marzo 2025",
     miembros: [
-      { cargo: "Presidente", nivel: 1, nombre: "Francisco Reyes", foto: "https://i.pravatar.cc/150?u=francisco2025", email: "" },
-      { cargo: "Vicepresidente", nivel: 2, nombre: "Daniela Soto", foto: "https://i.pravatar.cc/150?u=daniela2025", email: "" },
-      { cargo: "Secretario General", nivel: 2, nombre: "Tomás Espinoza", foto: "https://i.pravatar.cc/150?u=tomas2025", email: "" },
-      { cargo: "Tesorero", nivel: 3, nombre: "Verónica Leal", foto: "https://i.pravatar.cc/150?u=veronica2025", email: "" },
-      { cargo: "Director Deportivo", nivel: 3, nombre: "Valentino Molina", foto: "https://i.pravatar.cc/150?u=valentino2025", email: "" },
-      { cargo: "Directora de Nado", nivel: 3, nombre: "Neymar Colmenares", foto: "https://i.pravatar.cc/150?u=neymar2025", email: "" },
-      { cargo: "Vocal", nivel: 4, nombre: "Natalia Vargas", foto: "https://i.pravatar.cc/150?u=natalia2025", email: "" }
+      { cargo: "Presidente", nivel: 1, nombre: "Francisco Reyes", foto: "img/directiva/francisco-reyes.svg", email: "" },
+      { cargo: "Vicepresidente", nivel: 2, nombre: "Daniela Soto", foto: "img/directiva/daniela-soto.svg", email: "" },
+      { cargo: "Secretario General", nivel: 2, nombre: "Tomás Espinoza", foto: "img/directiva/tomas-espinoza.svg", email: "" },
+      { cargo: "Tesorero", nivel: 3, nombre: "Verónica Leal", foto: "img/directiva/veronica-leal.svg", email: "" },
+      { cargo: "Director Deportivo", nivel: 3, nombre: "Valentino Molina", foto: "img/directiva/valentino-molina.svg", email: "" },
+      { cargo: "Directora de Nado", nivel: 3, nombre: "Neymar Colmenares", foto: "img/directiva/neymar-colmenares.svg", email: "" },
+      { cargo: "Vocal", nivel: 4, nombre: "Natalia Vargas", foto: "img/directiva/natalia-vargas.svg", email: "" }
     ]
   },
   "2024": {
     periodo: "2024 - 2025",
     aprobadoEn: "Asamblea Constituyente · Marzo 2024",
     miembros: [
-      { cargo: "Presidente Fundador", nivel: 1, nombre: "Francisco Reyes", foto: "https://i.pravatar.cc/150?u=francisco2024", email: "" },
-      { cargo: "Vicepresidente", nivel: 2, nombre: "Marcela Torres", foto: "https://i.pravatar.cc/150?u=marcela2024", email: "" },
-      { cargo: "Secretario General", nivel: 2, nombre: "Andrés Molina", foto: "https://i.pravatar.cc/150?u=andres2024", email: "" },
-      { cargo: "Tesorero", nivel: 3, nombre: "Carla Ibáñez", foto: "https://i.pravatar.cc/150?u=carla2024", email: "" },
-      { cargo: "Director Deportivo", nivel: 3, nombre: "Rodrigo Castro", foto: "https://i.pravatar.cc/150?u=rodrigo2024", email: "" }
+      { cargo: "Presidente Fundador", nivel: 1, nombre: "Francisco Reyes", foto: "img/directiva/francisco-reyes.svg", email: "" },
+      { cargo: "Vicepresidente", nivel: 2, nombre: "Marcela Torres", foto: "img/directiva/marcela-torres.svg", email: "" },
+      { cargo: "Secretario General", nivel: 2, nombre: "Andrés Molina", foto: "img/directiva/andres-molina.svg", email: "" },
+      { cargo: "Tesorero", nivel: 3, nombre: "Carla Ibáñez", foto: "img/directiva/carla-ibanez.svg", email: "" },
+      { cargo: "Director Deportivo", nivel: 3, nombre: "Rodrigo Castro", foto: "img/directiva/rodrigo-castro.svg", email: "" }
     ]
   }
 };
@@ -862,6 +862,36 @@ function renderOrgChart() {
 }
 
 /* =========================================================================
+   TIMELINE HOVER IMAGE REVEAL
+   ========================================================================= */
+function initTimelineHover() {
+  const wrapper = document.querySelector('.timeline-wrapper');
+  if (!wrapper) return;
+  const panel = wrapper.querySelector('.timeline-image-panel');
+  const img = panel.querySelector('.timeline-image-panel__img');
+  const cards = wrapper.querySelectorAll('.card--timeline');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const url = card.dataset.image;
+      if (!url) return;
+      if (img.getAttribute('src') !== url) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = url;
+          img.style.opacity = '1';
+        }, 180);
+      }
+      wrapper.classList.add('has-hover');
+    });
+  });
+
+  wrapper.addEventListener('mouseleave', () => {
+    wrapper.classList.remove('has-hover');
+  });
+}
+
+/* =========================================================================
    INIT
    ========================================================================= */
 window.addEventListener('DOMContentLoaded', () => {
@@ -873,6 +903,7 @@ window.addEventListener('DOMContentLoaded', () => {
   renderEvents();
   renderResultsSelector();
   renderYearTabs();
+  initTimelineHover();
   renderOrgChart();
   updateProgress();
   // Event listener para contact cards

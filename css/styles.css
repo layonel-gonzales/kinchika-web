@@ -1462,6 +1462,15 @@ footer .footer__credits {
   font-size: 20px;
   flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(201, 168, 76, 0.2);
+  overflow: hidden;
+}
+
+.card--instructor .card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 .card--instructor .card__info {
@@ -1483,68 +1492,160 @@ footer .footer__credits {
 }
 
 /* Timeline historia mundial */
+/* ========== TIMELINE HORIZONTAL ========== */
 .grid--timeline {
-  max-width: 800px; margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
   position: relative;
-  padding-left: 40px;
+  padding-top: 40px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
+
 .grid--timeline::before {
-  content: ''; position: absolute;
-  left: 16px; top: 12px; bottom: 12px;
-  width: 2px; background: linear-gradient(180deg, transparent, rgba(201,168,76,.5), transparent);
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 19px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.5), transparent);
 }
-/* Normalizado: .card.card--timeline (anteriormente .grid--timeline-item) */
+
 .card.card--timeline {
-  position: relative; padding: 18px 0 18px 12px;
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+  padding: 16px 14px 14px;
+  cursor: default;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
+
 .card.card--timeline::before {
-  content: ''; position: absolute;
-  left: -32px; top: 38px;
+  content: '';
+  position: absolute;
+  top: -21px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 14px; height: 14px; border-radius: 50%;
   background: #C9A84C; border: 3px solid #001F3F;
   box-shadow: 0 0 0 2px rgba(201,168,76,.3);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
 }
-/* Normalizado: .card__icon (anteriormente .grid--timeline-icon) */
+
+.card.card--timeline:hover {
+  border-color: rgba(201, 168, 76, 0.35);
+  background: linear-gradient(135deg, rgba(20,18,10,0.95) 0%, rgba(0,20,40,0.92) 100%);
+}
+
+.card.card--timeline:hover::before {
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(201,168,76,.6), 0 0 10px rgba(201,168,76,.35);
+}
+
 .card.card--timeline .card__icon {
-  position: static; left: -78px; top: 24px;
-  font-size: 32px;
+  font-size: 22px;
 }
-@media (max-width: 600px) {
-  .card.card--timeline .card__icon { display: none; }
-  .grid--timeline { padding-left: 30px; }
-}
+
 .card.card--timeline h3 {
   font-family: 'Fraunces', serif;
-  font-size: 22px; color: #fff;
+  font-size: 15px; color: #fff;
+  margin: 6px 0 0 0;
 }
-/* Heredar color base */
+
 .card.card--timeline p {
-  font-size: 15px;
-  line-height: 1.75;
-  background: linear-gradient(135deg, rgba(20, 18, 10, 0.55) 0%, rgba(0, 20, 40, 0.52) 100%);
-  padding: 16px 18px;
-  border-radius: 10px;
-  border-left: 3px solid rgba(201, 168, 76, 0.4);
-  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  background: linear-gradient(135deg, rgba(20,18,10,0.55) 0%, rgba(0,20,40,0.52) 100%);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border-left: 3px solid rgba(201,168,76,0.4);
+  margin-top: 8px;
   transition: all 0.3s ease;
-}
-
-.header-container {
-    display: flex;       /* Alinea los hijos en línea */
-    align-items: center;  /* Centra el icono con el texto verticalmente */
-    gap: 10px;           /* Espacio entre el icono y el texto */
-}
-
-.header-container h3 {
-    margin: 0;           /* Quita el margen que viene por defecto en los h3 */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card.card--timeline p:hover {
-  background: linear-gradient(135deg, rgba(20, 18, 10, 0.72) 0%, rgba(0, 20, 40, 0.69) 100%);
-  border-left-color: rgba(201, 168, 76, 0.6);
+  background: linear-gradient(135deg, rgba(20,18,10,0.72) 0%, rgba(0,20,40,0.69) 100%);
+  border-left-color: rgba(201,168,76,0.6);
 }
+
 .card.card--timeline em { color: #C9A84C; font-style: italic; }
 .card.card--timeline strong { color: #C9A84C; }
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-container h3 { margin: 0; }
+
+/* ========== TIMELINE IMAGE PANEL (debajo, centrado) ========== */
+.timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.timeline-image-panel {
+  width: 75%;
+  height: 360px;
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    visibility 0s linear 0.4s;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.timeline-wrapper.has-hover .timeline-image-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    visibility 0s linear 0s;
+}
+
+.timeline-image-panel__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+@media (max-width: 700px) {
+  .grid--timeline {
+    flex-direction: column;
+    padding-top: 0;
+    padding-left: 30px;
+  }
+  .grid--timeline::before {
+    left: 14px; right: auto; top: 0; bottom: 0;
+    width: 2px; height: auto;
+    background: linear-gradient(180deg, transparent, rgba(201,168,76,.5), transparent);
+  }
+  .card.card--timeline {
+    flex: none;
+    padding: 16px 0 16px 12px;
+  }
+  .card.card--timeline::before {
+    top: 20px; left: -22px;
+    transform: none;
+  }
+  .timeline-image-panel { display: none; }
+}
 
 /* Horarios */
 .grid--schedule {
