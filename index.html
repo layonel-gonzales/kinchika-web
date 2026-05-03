@@ -20,9 +20,12 @@
 
 <!-- AUDIO OVERLAY -->
 <div id="audio-overlay">
-  <div style="font-size:48px">🎧</div>
+  <div class="overlay-icon" style="font-size:48px; margin-bottom: 20px;">🎧</div>
   <h2>Activa el sonido para vivir la experiencia completa</h2>
-  <p>El descenso ha sido compuesto con capas de audio que reaccionan a tu profundidad. Recomendamos auriculares.</p>
+  <p class="overlay-desc">
+    <span class="text-desktop">El descenso ha sido compuesto con capas de audio que reaccionan a tu profundidad. Recomendamos el uso de auriculares para una inmersión total.</span>
+    <span class="text-mobile">Experiencia sonora inmersiva. Recomendamos usar auriculares.</span>
+  </p>
   <div class="modal__buttons">
     <button class="btn--primary" id="enable-sound">Activar sonido y descender</button>
     <button class="btn--secondary" id="skip-sound">Continuar sin sonido</button>
@@ -77,7 +80,16 @@
     <div class="hero-header">
       <span class="hero-tag">ESTABLECIDO EN 2023 · LO PRADO</span>
       <h1 class="hero-title split-text">KINCHIKA</h1>
-      <p class="hero-subtitle">Club de buceo y apnea sin fines de lucro...</p>
+      
+      <p class="hero-subtitle">
+        <span class="text-desktop">Club de buceo y apnea sin fines de lucro de Lo Prado, dedicados a la formación de deportistas y la protección de nuestro ecosistema marino.</span>
+        <span class="text-mobile">Buceo y apnea en Lo Prado. Formamos deportistas y protegemos el mar.</span>
+      </p>
+    </div>
+
+    <div class="hero-buttons" style="margin-top: 30px;">
+      <button class="btn--primary scroll-to" data-target="#disciplinas">Explorar disciplinas</button>
+      <button class="btn--ghost scroll-to" data-target="#contacto">Unirse al club</button>
     </div>
   </div>
 </section>
@@ -85,10 +97,18 @@
 <div class="transition-bridge"></div>
 
 <!-- ============= TRANSICIÓN EDITORIAL ============= -->
-<section id="editorial-divider">
+<section id="editorial-divider" class="section">
   <div class="container">
     <h2 class="js-heading">Club de Buceo Kinchika</h2>
-    <p class="section__lead" data-reveal data-reveal-duration="0.9">Somos un club de buceo compuesto por vecinos de Lo Prado. No lucramos y estamos comprometidos con la ecología, la cultura submarina y el deporte.</p>
+    
+    <p class="section__lead" data-reveal data-reveal-duration="0.9">
+      <span class="text-desktop">
+        Somos un club de buceo compuesto por vecinos de la comuna de Lo Prado. Funcionamos sin fines de lucro, comprometidos profundamente con la ecología marina, la cultura submarina y el desarrollo del deporte local.
+      </span>
+      <span class="text-mobile">
+        Club de buceo vecinal de Lo Prado. Sin fines de lucro, unidos por el deporte y la ecología marina.
+      </span>
+    </p>
   </div>
 </section>
 
@@ -99,9 +119,18 @@
       <div class="eyebrow js-eyebrow">Quiénes somos</div>
       <h2 class="js-heading">Nuestra misión</h2>
     </div>
+
     <div class="card card--mission" data-reveal data-reveal-duration="0.85">
-      <div class="card__quote">"Fomentar el desarrollo integral de la comunidad a través de la práctica de deportes subacuáticos y la educación ambiental. Como organización sin fines de lucro, nos dedicamos a la preservación del patrimonio marino y el rescate de la cultura submarina, promoviendo la equidad social y el acceso inclusivo al deporte bajo un modelo de gestión transparente y colaborativo."</div>
+      <div class="card__quote">
+        <span class="text-desktop">
+          "Fomentar el desarrollo integral de la comunidad a través de la práctica de deportes subacuáticos y la educación ambiental. Como organización sin fines de lucro, nos dedicamos a la preservación del patrimonio marino y el rescate de la cultura submarina, promoviendo la equidad social y el acceso inclusivo al deporte bajo un modelo de gestión transparente y colaborativo."
+        </span>
+        <span class="text-mobile">
+          "Fomentar el desarrollo comunitario mediante deportes subacuáticos y educación ambiental, promoviendo el acceso inclusivo y la preservación del patrimonio marino de forma transparente."
+        </span>
+      </div>
     </div>
+
     <div class="grid--disciplines">
       <span class="badge badge--discipline" data-reveal data-reveal-duration="0.6">Buceo</span>
       <span class="badge badge--discipline" data-reveal data-reveal-duration="0.6">Apnea</span>
@@ -124,12 +153,30 @@
     </div>
     <div class="grid--history">
       <div class="section__text" data-reveal data-reveal-duration="0.9">
-        <p>Somos un grupo de vecinos, pobladores de <strong>Barrancas</strong>, que movidos por la pasión por el mar nos hemos consolidado como un club deportivo, social y cultural dedicado a las actividades subacuáticas.
-        Aunque nuestra identidad está arraigada en una zona interior, mantenemos un vínculo vital con el océano a través de la participación en campañas ecológicas de limpieza y el apoyo constante a proyectos de cultura marina.
-        Nuestra historia dio un paso decisivo con la apertura de la <strong>piscina municipal de Lo Prado</strong>, espacio que hemos transformado en nuestro centro de entrenamiento.
-        Hemos hecho fuerza con compras al por mayor para adquirir equipamiento especializado y buscando convenios para la obtención de licencias de buceo inicial. Así también nos adjudicamos nuestra propia <strong>boya grupal para prácticas de profundidad</strong>.</p>
-        <p>Somos una comunidad que derriba distancias geográficas para sumergirse en el deporte y el cuidado del medio ambiente marino.</p>
+        <p>
+          <span class="text-desktop">
+            Somos un grupo de vecinos, pobladores de <strong>Barrancas</strong>, que movidos por la pasión por el mar nos hemos consolidado como un club deportivo, social y cultural dedicado a las actividades subacuáticas. Aunque nuestra identidad está arraigada en una zona interior, mantenemos un vínculo vital con el océano a través de la participación en campañas ecológicas de limpieza y el apoyo constante a proyectos de cultura marina.
+          </span>
+          <span class="text-mobile">
+            Vecinos de <strong>Barrancas</strong> unidos por la pasión por el mar. Un club deportivo y social que derriba la distancia geográfica para conectar con el océano.
+          </span>
+        </p>
+        
+        <p>
+          <span class="text-desktop">
+            Nuestra historia dio un paso decisivo con la apertura de la <strong>piscina municipal de Lo Prado</strong>, espacio que hemos transformado en nuestro centro de entrenamiento. Hemos hecho fuerza con compras al por mayor para adquirir equipamiento especializado y buscando convenios para la obtención de licencias de buceo inicial. Así también nos adjudicamos nuestra propia <strong>boya grupal para prácticas de profundidad</strong>.
+          </span>
+          <span class="text-mobile">
+            Entrenamos en la <strong>piscina municipal de Lo Prado</strong>. Gracias al esfuerzo colectivo, hoy contamos con equipamiento especializado y nuestra propia boya de profundidad.
+          </span>
+        </p>
+
+        <p>
+          <span class="text-desktop">Somos una comunidad que derriba distancias geográficas para sumergirse en el deporte y el cuidado del medio ambiente marino.</span>
+          <span class="text-mobile">Sumergidos en el deporte y el cuidado del medio ambiente marino.</span>
+        </p>
       </div>
+
       <div class="section__instructors" data-reveal data-reveal-duration="0.9">
         <h3 class="section__instructors-title">Nuestros profesores</h3>
         <div class="card card--instructor" data-reveal data-reveal-duration="0.7">
@@ -163,44 +210,67 @@
       <h2 class="js-heading">Freediving · Buceo libre</h2>
       <p class="card">Una de las disciplinas más fascinantes y antiguas de la interacción humana con el mar.</p>
     </div>
+    
     <div class="timeline-wrapper">
       <div class="grid--timeline">
+        
         <div class="card card--timeline" data-image="img/timeline/grecia.svg" data-reveal data-reveal-duration="0.7">
           <div class="header-container">
             <div class="card__icon">🏛️</div>
             <h3>Antigua Grecia · Kálimnos</h3>
           </div>
-          <p>Los griegos se sumergían desnudos arrastrando una piedra pesada — la <em>skandalopetra</em> — para llegar rápido al fondo. Llenaban su boca con aceite de oliva y lo escupían en el fondo: rompía la refracción de la luz y mejoraba la visibilidad. Aristóteles y Homero ya escribían sobre ellos.</p>
+          <p>
+            <span class="text-desktop">Los griegos se sumergían desnudos arrastrando una piedra pesada — la <em>skandalopetra</em> — para llegar rápido al fondo. Llenaban su boca con aceite de oliva y lo escupían en el fondo: rompía la refracción de la luz y mejoraba la visibilidad. Aristóteles y Homero ya escribían sobre ellos.</span>
+            <span class="text-mobile">Buceadores usaban la <em>skandalopetra</em> (piedra pesada) para descender. Usaban aceite de oliva para mejorar la visibilidad, una técnica citada por Aristóteles.</span>
+          </p>
         </div>
+
         <div class="card card--timeline" data-image="img/timeline/japon-ama.svg" data-reveal data-reveal-duration="0.7">
           <div class="header-container">
             <div class="card__icon">🌸</div>
             <h3>Japón · Las Ama</h3>
           </div>
-          <p>Casi 2.000 años de tradición milenaria de buceo en apnea protagonizada exclusivamente por mujeres. Conocidas como las "Mujeres del Mar", son históricamente famosas por su habilidad para recolectar perlas naturales y mariscos sumergiéndose a grandes profundidades.</p>
+          <p>
+            <span class="text-desktop">Casi 2.000 años de tradición milenaria de buceo en apnea protagonizada exclusivamente por mujeres. Conocidas como las "Mujeres del Mar", son históricamente famosas por su habilidad para recolectar perlas naturales y mariscos sumergiéndose a grandes profundidades.</span>
+            <span class="text-mobile">Milenaria tradición de mujeres buceadoras. Famosas por recolectar perlas y mariscos a gran profundidad sin equipo de respiración.</span>
+          </p>
         </div>
+
         <div class="card card--timeline" data-image="img/timeline/corea-haenyeo.svg" data-reveal data-reveal-duration="0.7">
           <div class="header-container">
             <div class="card__icon">🌊</div>
             <h3>Corea · Las Haenyeo</h3>
           </div>
-          <p>Originarias de la isla de Jeju. Con frecuencia superando los 60 e incluso los 80 años, mantienen viva la tradición de recolectar a mano algas y mariscos, simbolizando una cultura matriarcal única de resistencia y autonomía económica.</p>
+          <p>
+            <span class="text-desktop">Originarias de la isla de Jeju. Con frecuencia superando los 60 e incluso los 80 años, mantienen viva la tradición de recolectar a mano algas y mariscos, simbolizando una cultura matriarcal única de resistencia y autonomía económica.</span>
+            <span class="text-mobile">Buceadoras de la isla de Jeju. Mujeres de hasta 80 años que mantienen viva la recolección manual de mariscos y algas.</span>
+          </p>
         </div>
+
         <div class="card card--timeline" data-image="img/timeline/pelizzari.svg" data-reveal data-reveal-duration="0.7">
           <div class="header-container">
             <div class="card__icon">🇮🇹</div>
             <h3>Umberto Pelizzari</h3>
           </div>
-          <p>El italiano que estableció nuevos límites para el buceo en apnea moderno, basados en la <strong>relajación y la técnica mental</strong>. Reescribió las posibilidades del cuerpo humano bajo el agua.</p>
+          <p>
+            <span class="text-desktop">El italiano que estableció nuevos límites para el buceo en apnea moderno, basados en la <strong>relajación y la técnica mental</strong>. Reescribió las posibilidades del cuerpo humano bajo el agua.</span>
+            <span class="text-mobile">Icono de la apnea moderna. Revolucionó el deporte mediante la relajación y técnicas mentales de control corporal.</span>
+          </p>
         </div>
+
         <div class="card card--timeline" data-image="img/timeline/molchanova.svg" data-reveal data-reveal-duration="0.7">
           <div class="header-container">
             <div class="card__icon">⭐</div>
             <h3>Natalia Molchanova</h3>
           </div>
-          <p>La rusa que en el siglo XXI consolidó el deporte con un dominio absoluto, estableciendo múltiples récords mundiales e integrando la ciencia y el yoga a la disciplina, dejando un legado educativo que continúa definiendo los límites de lo que el cuerpo humano puede lograr bajo el agua sin asistencia.</p>
+          <p>
+            <span class="text-desktop">La rusa que en el siglo XXI consolidó el deporte con un dominio absoluto, estableciendo múltiples récords mundiales e integrando la ciencia y el yoga a la disciplina, dejando un legado educativo que continúa definiendo los límites de lo que el cuerpo humano puede lograr.</span>
+            <span class="text-mobile">La mayor apneista de la historia. Integró el yoga y la ciencia, estableciendo múltiples récords mundiales y un legado educativo único.</span>
+          </p>
         </div>
+
       </div>
+      
       <div class="timeline-image-panel" aria-hidden="true">
         <img class="timeline-image-panel__img" src="" alt="" loading="lazy">
       </div>
@@ -216,24 +286,36 @@
       <h2 class="js-heading">Horarios</h2>
       <p>Piscina municipal de Lo Prado · 21:00 a 22:00 hrs</p>
     </div>
+    
     <div class="grid--schedule">
       <div class="card card--schedule" data-reveal data-reveal-duration="0.7">
-        <h3 class="card__title">Nado y acondicionamiento físico</h3>
+        <h3 class="card__title">Nado y acondicionamiento</h3>
         <div class="card__day">Martes</div>
         <div class="card__hour">21:00 — 22:00</div>
-        <p class="card__description">Entrenamiento guiado por profesores, centrado en el desarrollo de la natación y capacidades aeróbicas.</p>
+        <p class="card__description">
+          <span class="text-desktop">Entrenamiento guiado por profesores, centrado en el desarrollo de la natación y capacidades aeróbicas.</span>
+          <span class="text-mobile">Entrenamiento guiado enfocado en natación y capacidad aeróbica.</span>
+        </p>
       </div>
+
       <div class="card card--schedule" data-reveal data-reveal-duration="0.7">
         <h3 class="card__title">Nado libre</h3>
         <div class="card__day">Miércoles</div>
         <div class="card__hour">21:00 — 22:00</div>
-        <p class="card__description">Cada persona coordina su propio plan de trabajo, promoviendo la crítica constructiva entre compañeros.</p>
+        <p class="card__description">
+          <span class="text-desktop">Cada persona coordina su propio plan de trabajo, promoviendo la crítica constructiva entre compañeros.</span>
+          <span class="text-mobile">Práctica libre con enfoque en la colaboración y corrección entre compañeros.</span>
+        </p>
       </div>
+
       <div class="card card--schedule" data-reveal data-reveal-duration="0.7">
         <h3 class="card__title">Apnea</h3>
         <div class="card__day">Jueves</div>
         <div class="card__hour">21:00 — 22:00</div>
-        <p class="card__description">Sesión técnica de apnea bajo la supervisión y dirección de nuestros profesores.</p>
+        <p class="card__description">
+          <span class="text-desktop">Sesión técnica de apnea bajo la supervisión y dirección de nuestros profesores especializados.</span>
+          <span class="text-mobile">Sesión técnica de apnea bajo supervisión profesional.</span>
+        </p>
       </div>
     </div>
 
@@ -241,16 +323,24 @@
       <div class="eyebrow js-eyebrow">Tablas de entrenamiento</div>
       <h2 style="font-size:clamp(28px,4vw,44px)">Hipoxia & Hipercapnia</h2>
     </div>
+
     <div class="grid--tabla">
       <div class="card card--tabla card--tabla--interactive" data-table="o2" data-reveal data-reveal-duration="0.75" style="cursor: pointer;">
         <div class="card__tag">O₂</div>
         <h3>Tabla de Oxígeno</h3>
-        <p>Se enfocan en la resistencia a la falta de oxígeno. Para funcionar con <strong>hipoxia</strong> (bajo nivel de oxígeno), mejorar la capacidad pulmonar, la tolerancia a la hipoxia e incrementar la duración de las apneas.</p>
+        <p>
+          <span class="text-desktop">Se enfocan en la resistencia a la falta de oxígeno. Para funcionar con <strong>hipoxia</strong> (bajo nivel de oxígeno), mejorar la capacidad pulmonar, la tolerancia a la hipoxia e incrementar la duración de las apneas.</span>
+          <span class="text-mobile">Entrenamiento de resistencia a la <strong>hipoxia</strong> para mejorar la capacidad pulmonar y duración de la apnea.</span>
+        </p>
       </div>
+
       <div class="card card--tabla card--tabla--interactive" data-table="co2" data-reveal data-reveal-duration="0.75" style="cursor: pointer;">
         <div class="card__tag">CO₂</div>
         <h3>Tabla de CO₂</h3>
-        <p>Se centran en la tolerancia a la <strong>hipercapnia</strong> (exceso de dióxido de carbono), entrenando al cuerpo para resistir la acidosis y el deseo de respirar sin necesidad de llegar a niveles críticos de hipoxia. Se reducen progresivamente los intervalos de descanso, lo que provoca una acumulación deliberada de CO₂ en la sangre.</p>
+        <p>
+          <span class="text-desktop">Se centran en la tolerancia a la <strong>hipercapnia</strong> (exceso de dióxido de carbono), entrenando al cuerpo para resistir la acidosis y el deseo de respirar sin necesidad de llegar a niveles críticos de hipoxia.</span>
+          <span class="text-mobile">Entrenamiento de tolerancia a la <strong>hipercapnia</strong> para resistir el deseo de respirar mediante descansos reducidos.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -270,7 +360,10 @@
     <div class="section__head">
       <div class="eyebrow js-eyebrow">Calendario</div>
       <h2 class="js-heading">Próximos eventos</h2>
-      <p>Limpiezas de playa, clínicas, salidas grupales y encuentros del club Kinchika. Inscripciones abiertas y próximas actividades.</p>
+      <p>
+        <span class="text-desktop">Limpiezas de playa, clínicas, salidas grupales y encuentros del club Kinchika. Inscripciones abiertas y próximas actividades.</span>
+        <span class="text-mobile">Limpiezas de playa, clínicas y salidas grupales. ¡Inscríbete en nuestras próximas actividades!</span>
+      </p>
     </div>
 
     <div class="filters">
@@ -282,6 +375,7 @@
         <button data-disc="DEPTH">Profundidad</button>
         <button data-disc="EDU">Charlas</button>
       </div>
+      
       <div class="filter__row">
         <select id="level-filter">
           <option value="ALL">Todos los niveles</option>
@@ -305,7 +399,10 @@
     <div class="section__head">
       <div class="eyebrow js-eyebrow">Marcador oficial</div>
       <h2 class="js-heading">Resultados de eventos</h2>
-      <p>Registro histórico de competencias y encuentros del club Kinchika con la federación FEDESUB.</p>
+      <p>
+        <span class="text-desktop">Registro histórico de competencias y encuentros del club Kinchika en colaboración con la federación FEDESUB.</span>
+        <span class="text-mobile">Registro histórico de competencias y encuentros con FEDESUB.</span>
+      </p>
     </div>
 
     <div class="result__selector">
@@ -322,7 +419,10 @@
     <div class="section__head">
       <div class="eyebrow js-eyebrow">Historia institucional</div>
       <h2 class="js-heading">Directiva del Club</h2>
-      <p>Registro permanente de quienes han liderado el Club Kinchika año a año.</p>
+      <p>
+        <span class="text-desktop">Registro permanente de quienes han liderado el Club Kinchika año a año, velando por el crecimiento y transparencia de nuestra organización.</span>
+        <span class="text-mobile">Registro histórico de quienes han liderado el Club Kinchika año tras año.</span>
+      </p>
     </div>
 
     <div class="year__tabs" id="year-tabs"></div>
@@ -330,7 +430,8 @@
     <div class="org__chart" id="org-chart"></div>
 
     <div class="directiva__footnote">
-      Los datos de directiva pueden actualizarse editando el objeto <code style="color:#C9A84C">directivas</code> en el código fuente del sitio.
+      <span class="text-desktop">Los datos de la directiva pueden actualizarse editando el objeto <code style="color:#C9A84C">directivas</code> en el código fuente del sitio.</span>
+      <span class="text-mobile">Datos actualizables en el código fuente (<code style="color:#C9A84C">directivas</code>).</span>
     </div>
   </div>
 </section>
@@ -343,14 +444,25 @@
       <h2 class="js-heading">Lugar</h2>
       <p>Piscina municipal de Lo Prado — nuestro centro de entrenamiento.</p>
     </div>
+    
     <div class="card card--location">
       <div class="card__info">
         <h3>Piscina Municipal de Lo Prado</h3>
         <div class="card__address">Los Copihues 5797</div>
         <div class="card__city">Lo Prado · Región Metropolitana · Chile</div>
-        <p style="color:rgba(255,255,255,.7); line-height:1.7;">Espacio que hemos transformado en nuestro centro de entrenamiento gracias al apoyo de la municipalidad. Aquí desarrollamos las sesiones de nado, acondicionamiento y técnica de apnea.</p>
-        <a href="https://maps.google.com/?q=Los+Copihues+5797+Lo+Prado" target="_blank" rel="noopener" class="btn--detail" style="margin-top:24px;display:inline-block;">Ver en Google Maps</a>
+        
+        <p style="color:rgba(255,255,255,.7); line-height:1.7;">
+          <span class="text-desktop">
+            Espacio que hemos transformado en nuestro centro de entrenamiento gracias al apoyo de la municipalidad. Aquí desarrollamos las sesiones de nado, acondicionamiento y técnica de apnea.
+          </span>
+          <span class="text-mobile">
+            Centro de entrenamiento para nado, acondicionamiento y técnica de apnea, gracias al apoyo municipal.
+          </span>
+        </p>
+        
+        <a href="https://maps.google.com/?q=Los+Copihues+5797,+Lo+Prado" target="_blank" rel="noopener" class="btn--detail" style="margin-top:24px;display:inline-block;">Ver en Google Maps</a>
       </div>
+      
       <div class="card__map">
         <iframe loading="lazy" allowfullscreen
           src="https://www.google.com/maps?q=Los+Copihues+5797+Lo+Prado+Santiago+Chile&output=embed"></iframe>
@@ -405,24 +517,26 @@
 <!-- ============= FOOTER ============= -->
 <footer>
   <div class="footer__brand">KINCHIKA</div>
-  <div class="footer__tagline">Club de Buceo y Apnea · Lo Prado, Región Metropolitana, Chile</div>
+  <div class="footer__tagline">Club de Buceo y Apnea · Lo Prado, RM, Chile</div>
 
   <div class="footer__links">
-    <a href="#mision">Misión</a>
-    <a href="#historia">Historia</a>
-    <a href="#eventos">Eventos</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#mision" class="scroll-to">Misión</a>
+    <a href="#historia" class="scroll-to">Historia</a>
+    <a href="#eventos" class="scroll-to">Eventos</a>
+    <a href="#contacto" class="scroll-to">Contacto</a>
     <a href="https://www.instagram.com/clubdebuceo.kinchika/" target="_blank" rel="noopener">Instagram</a>
   </div>
 
   <div class="footer__divider"></div>
 
   <div class="footer__credits">
-    Buceo · Apnea · Nado con aletas · Rescatismo · Educación ambiental
+    <span class="text-desktop">Buceo · Apnea · Nado con aletas · Rescatismo · Educación ambiental</span>
+    <span class="text-mobile">Buceo · Apnea · Educación ambiental</span>
     <br>
     📞 +56 9 6750 8503 — Francisco Reyes
     <br><br>
-    Esta web es una experiencia inmersiva. Practica apnea siempre acompañado y bajo supervisión profesional.
+    <span class="text-desktop">Esta web es una experiencia inmersiva. Practica apnea siempre acompañado y bajo supervisión profesional.</span>
+    <span class="text-mobile">Practica apnea siempre acompañado y con supervisión.</span>
     <br>
     © 2026 Club de Buceo Kinchika · Todos los derechos reservados
   </div>

@@ -157,6 +157,39 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ==========================================================
+   OPTIMIZACIÓN DE TEXTOS ADAPTATIVOS
+   ========================================================== */
+
+/* Por defecto (Escritorio), ocultamos la versión corta */
+.text-mobile {
+  display: none;
+}
+
+.text-desktop {
+  display: inline;
+}
+
+/* Cuando la pantalla es menor a 768px (Móviles) */
+@media (max-width: 768px) {
+  .text-desktop {
+    display: none; /* Escondemos el texto largo */
+  }
+  
+  .text-mobile {
+    display: inline; /* Mostramos el texto corto y directo */
+    font-size: 0.95rem; /* Opcional: ajustar ligeramente el tamaño */
+    line-height: 1.4;
+  }
+
+  /* Optimización extra para párrafos en móviles */
+  p {
+    max-width: 90%; /* Evita que el texto toque los bordes */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ==========================================================
    AUDIO OVERLAY
    ========================================================== */
 #audio-overlay {
