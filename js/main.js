@@ -252,21 +252,33 @@ function lerpColor(a, b, t) {
 }
 // Asegúrate de que todos los códigos tengan el "#"
 const depthStops = [
-  { p: 0.00, top: '#000d1a', bot: '#001a33' }, // INICIO: Azul marino muy oscuro
-  { p: 0.15, top: '#001a33', bot: '#000810' }, // Bajando: Azul medianoche
-  { p: 0.35, top: '#000810', bot: '#00050a' }, // Zona oscura
-  { p: 0.60, top: '#00050a', bot: '#000205' }, // Penumbra total
-  { p: 0.85, top: '#000205', bot: '#000000' }, // Abismo
-  { p: 1.00, top: '#000000', bot: '#000000' }  // FONDO: Negro absoluto
+  // p: 0.00 coincide exactamente con el final del video (Azul Negro #000814)
+  { p: 0.00, top: '#001a33', bot: '#000810' }, 
+  // p: 0.15 ya estamos casi en negro absoluto para ocultar cualquier corte
+  { p: 0.15, top: '#000000', bot: '#000000' }, 
+  { p: 0.35, top: '#000000', bot: '#000000' }, 
+  { p: 0.60, top: '#000000', bot: '#000000' }, 
+  { p: 0.85, top: '#000000', bot: '#000000' }, 
+  { p: 1.00, top: '#000000', bot: '#000000' }
 ];
+
 function applyDepthBg(p) {
   let i = 0;
   for (; i < depthStops.length - 1; i++) if (p < depthStops[i + 1].p) break;
-  const a = depthStops[Math.max(0, i)], b = depthStops[Math.min(depthStops.length - 1, i + 1)];
+  
+  const a = depthStops[Math.max(0, i)];
+  const b = depthStops[Math.min(depthStops.length - 1, i + 1)];
+  
   const t = (p - a.p) / Math.max(0.0001, (b.p - a.p));
+  
+  // Usamos lerpColor para suavizar el cambio de colores oscuros
   const top = lerpColor(a.top, b.top, t);
   const bot = lerpColor(a.bot, b.bot, t);
-  document.getElementById('deep-bg').style.background = `linear-gradient(180deg, ${top} 0%, ${bot} 100%)`;
+  
+  const bg = document.getElementById('deep-bg');
+  if (bg) {
+    bg.style.background = `linear-gradient(180deg, ${top} 0%, ${bot} 100%)`;
+  }
 }
 
 /* =========================================================================
